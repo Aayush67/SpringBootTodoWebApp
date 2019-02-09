@@ -39,8 +39,21 @@ public class TodoService {
 	}
 
 	public void updateTodo(Todo todo) {
-		todos.remove(todo);
-		todos.add(todo);
+		System.out.print("Todos "+todo);
+//		odos.remove(todo);
+//		todos.add(todo);
+		Iterator<Todo> iterator = todos.iterator();
+		while (iterator.hasNext()) {
+			Todo todoItr = iterator.next();
+			if (todoItr.getId() == todo.getId()) {
+				todoItr.setDesc(todo.getDesc());
+				todoItr.setisDone(todo.getisDone());
+				todoItr.setTargetDate(todo.getTargetDate());
+				todoItr.setUser(todo.getUser());
+				todoItr.setId(todo.getId());
+				
+			}
+		}
 	}
 
 	public void addTodo(String name, String desc, Date targetDate,
